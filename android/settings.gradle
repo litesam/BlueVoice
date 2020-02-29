@@ -1,0 +1,5 @@
+rootProject.name = 'BlueVoice2'
+include ':react-native-bluetooth-serial'
+project(':react-native-bluetooth-serial').projectDir = new File(rootProject.dir, '../node_modules/react-native-bluetooth-serial/android')
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
