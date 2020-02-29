@@ -27,10 +27,7 @@ export default class App extends Component {
     super(props);
     this.isBluetoothEnabled = this.isBluetoothEnabled.bind(this);
     this.getPairedDevices = this.getPairedDevices.bind(this);
-    this.enableBluetoothAndRefresh = this.enableBluetoothAndRefresh.bind(this);
-    this.connectToDevice = this.connectToDevice.bind(this);
     this.disconnect = this.disconnect.bind(this);
-    this.sendStringToDevice = this.sendStringToDevice.bind(this);
     this.onChangeText = this.onChangeText.bind(this);
     this.sendToArduino = this.sendToArduino.bind(this);
     this.connectToShit = this.connectToShit.bind(this);
@@ -82,46 +79,6 @@ export default class App extends Component {
     }
   }
 
-  async enableBluetoothAndRefresh() {
-    try {
-      await BluetoothSerial.enable();
-      setTimeout(() => {
-        this.getPairedDevices();
-      }, 1000);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async connectToDevice(device) {
-    const { connectedDevice } = this.state;
-    const connectedDeviceId = connectedDevice && connectedDevice.id;
-    if (!this.state.connecting) {
-      if (device.id === connectedDeviceId) {
-        console.log('State', 'Already connected to this device.');
-      } else {
-        try {
-          this.setState({
-            connecting: true,
-            connectedDevice: null
-          });
-          await BluetoothSerial.connect(device.id);
-          this.setState({
-            connectedDevice: device,
-            connecting: false
-          });
-        } catch (e) {
-          console.log(e);
-          this.setState({
-            connectedDevice: null,
-            connecting: false
-          });
-          console.log('Unable to connect to this device.');
-        }
-      }
-    }
-  }
-
   async disconnect() {
     if (!this.state.connecting) {
       try {
@@ -138,14 +95,6 @@ export default class App extends Component {
     }
   }
 
-  async sendStringToDevice(data) {
-    try {
-      await BluetoothSerial.write(data);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   onChangeText(text) {
     console.log(this.state.textData);
     this.setState({ textData: text });
@@ -157,9 +106,10 @@ export default class App extends Component {
 
   async connectToShit() {
     BluetoothSerial.isConnected().then(connected => {
-      if (!connnected) {
+      if (!connected) {
         BluetoothSerial.connect(this.state.pairedDevices[0].id).then(res => {
           this.setState({ connecting: true });
+          console.log(this.state.connecting);
         }).catch(err => console.log(err));
       }
     });
