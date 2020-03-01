@@ -47,10 +47,6 @@ export default class App extends Component {
 
   componentDidMount() {
     BluetoothSerial.on('bluetoothDisabled', this.isBluetoothEnabled);
-    // BluetoothSerial.isConnected()
-    //   .then(connected => {
-
-    //   });
   }
 
   componentWillUnmount() {
