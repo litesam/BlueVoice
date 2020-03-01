@@ -12,9 +12,11 @@
     "shitty_start": "yarn shit && yarn android"
   },
   "dependencies": {
+    "feather-icons": "^4.26.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-bluetooth-serial": "^1.0.0-rc1",
+    "react-native-svg": "^11.0.1",
     "react-router-native": "^5.1.2",
     "styled-components": "^5.0.1"
   },

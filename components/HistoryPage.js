@@ -23,10 +23,10 @@ export default class HistoryPage extends React.Component {
         <Link to="/" underlayColor="pink">
           <Text>{'<-'}</Text>
         </Link>
-        <View styles={styles.centerView}>
+        <View style={styles.centerView}>
           {A.map((values, i) => {
             return (
-              <View key={i + 1} styles={styles.holder}>
+              <View key={i + 1} style={styles.holder}>
                 <Text>{values.speaker}</Text>
                 <Text>{values.data}</Text>
                 <Text>{values.timeStamp}</Text>
@@ -44,13 +44,17 @@ const styles = StyleSheet.create({
   centerView: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'pink'
+    alignItems: 'flex-start',
+    // backgroundColor: 'pink'
   },
   navigation: {
-    padding: '50px'
+    padding: 10
   },
   holder: {
-    marginTop: '60px'
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: 'pink',
+    flexGrow: 2
   }
 });

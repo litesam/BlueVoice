@@ -28,9 +28,12 @@ const StyledButton = styled.TouchableOpacity`
   width: 200px;
   flex: 1;
   height: 200px;
-  border-radius: 128;
+  border-radius: 132;
   align-items: center;
   justify-content: center;
+  border-width: 1;
+  border-color: #000;
+  margin-bottom: 10px;
 `;
 
 export default class MainPage extends React.Component {
@@ -147,6 +150,7 @@ export default class MainPage extends React.Component {
             ><Text>Connect</Text></TouchableOpacity>
           </View>
         </Wrapper>
+        <Link to="/history"><Text>See History</Text></Link>
       </View>
     );
   }
