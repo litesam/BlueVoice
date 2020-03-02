@@ -1,8 +1,12 @@
 import React from 'react';
 import BluetoothSerial from 'react-native-bluetooth-serial';
-import { View, TextInput, Button, Text, TouchableOpacity } from 'react-native';
+import { View, Switch, Button, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
 import styled from 'styled-components/native';
+import { SvgXml } from 'react-native-svg';
+import { icons } from 'feather-icons/dist/feather';
+
+import Sidebar from './Sidebar';
 
 // TODO: Send to Arduino is a seperate component which should be on FeedPage
 
@@ -51,7 +55,8 @@ export default class MainPage extends React.Component {
       pairedDevices: [],
       connectedDevice: null,
       connecting: false,
-      textData: ''
+      textData: '',
+      isOpen: false
     };
   }
 
@@ -130,6 +135,16 @@ export default class MainPage extends React.Component {
     console.log(this.state.connecting);
     return (
       <View>
+        <TouchableHighlight
+          onPress={() => this.setState({ isOpen: !this.state.isOpen })}
+        >
+          <SvgXml
+            width="30"
+            height="30"
+            xml={icons['menu'].toSvg({ stroke: 'black' })}
+          />
+        </TouchableHighlight>
+        {this.state.isOpen && <Sidebar />}
         <Wrapper>
           <View style={{ justifyContent: 'space-between' }}>
             {!this.state.connecting ?
@@ -148,9 +163,13 @@ export default class MainPage extends React.Component {
               style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'papayawhip', height: 50 }}
               onPress={this.connectToShit}
             ><Text>Connect</Text></TouchableOpacity>
+            {/* <Switch
+              value={false}
+              onValueChange={val => this.setState({ label: val })}
+            /> */}
           </View>
         </Wrapper>
-        <Link to="/history"><Text>See History</Text></Link>
+        {/* <Link to="/history"><Text>See History</Text></Link> */}
       </View>
     );
   }
