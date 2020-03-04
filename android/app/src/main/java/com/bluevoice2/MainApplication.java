@@ -12,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.rusel.RCTBluetoothSerial.*;
 import com.horcrux.svg.SvgPackage;
+import com.goodatlas.audiorecord.*;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
             packages.add(new RCTBluetoothSerialPackage());
             packages.add(new SvgPackage());
+            packages.add(new RNAudioRecordPackage());
           return packages;
         }
 

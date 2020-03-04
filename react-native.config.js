@@ -9,6 +9,11 @@ module.exports = {
       platforms: {
         android: null, // disable Android platform other platforms will still autolink
       }
+    },
+    'react-native-audio-record': {
+      platforms: {
+        android: null, // disable Android platform other platforms will still autolink
+      }
     }
   },
 };

@@ -1,9 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
 import { Link } from 'react-router-native';
 import { SvgXml } from 'react-native-svg';
 import { icons } from 'feather-icons/dist/feather';
+import { Buffer } from 'buffer';
+import AudioRecord from 'react-native-audio-record';
 
 const Holder = styled.View`
   width: 90%;
@@ -30,6 +32,24 @@ const StyledButton = styled.TouchableOpacity`
 export default class FeedPage extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  async componentDidMount() {
+    const options = {
+      sampleRate: 16000,
+      channels: 1,
+      bitsPerSample: 16,
+      wavFile: 'test.wav'
+    };
+
+    AudioRecord.init(options);
+
+    AudioRecord.on('data', (data) => {
+      const chunk = Buffer.from(data, 'base64');
+      console.log(chunk.byteLength);
+    });
+
+    AudioRecord.start();
   }
 
   render() {

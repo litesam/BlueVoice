@@ -183,6 +183,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-bluetooth-serial')
     implementation project(':react-native-svg')
+    implementation project(':react-native-audio-record')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
