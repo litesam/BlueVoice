@@ -1658,6 +1658,14 @@ buffer@^4.6.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
+buffer@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.4.3.tgz#3fbc9c69eb713d323e3fc1a895eee0710c072115"
+  integrity sha512-zvj65TkFeIt3i6aj5bIvJDzjjQQGs4o/sNoezg1F1kYap9Nu2jcUdpwzRSJTHMMzG0H7bZkn4rNQpImhuxWX2A==
+  dependencies:
+    base64-js "^1.0.2"
+    ieee754 "^1.1.4"
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
@@ -5277,6 +5285,11 @@ react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-i
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
+
+react-native-audio-record@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-audio-record/-/react-native-audio-record-0.2.2.tgz#9cbb0ddd3cbdd18f5edfabae812c0bc9c680e928"
+  integrity sha512-+JEY3AWz21xylePbXZ81DLHcqU5oJYztn3Uel3ay53P3ZrvJlwfmOmyOuoavA9boPV1O0dLLQIu9gC7xbKwNvQ==
 
 react-native-bluetooth-serial@^1.0.0-rc1:
   version "1.0.0-rc1"
