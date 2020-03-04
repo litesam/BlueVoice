@@ -13,16 +13,19 @@ import {
   Button,
   View,
   TextInput,
+  DrawerLayoutAndroid
 } from 'react-native';
 
 import BluetoothSerial from 'react-native-bluetooth-serial';
+
+// TODO: For Havoc
 
 // const BLUETOOTH_ENABLED = 'bluetoothEnabled';
 // const BLUETOOTH_DISABLED = 'bluetoothDisabled';
 // const BLUETOOTH_ERROR = 'error';
 // const BLUETOOTH_CONNECTION_LOST = 'connectionLost';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.isBluetoothEnabled = this.isBluetoothEnabled.bind(this);
@@ -155,3 +158,31 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
 });
+
+function App2() {
+  var navigationView = (
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <Text style={{ margin: 10, fontSize: 15, textAlign: "left" }}>
+        I'm in the Drawer!
+      </Text>
+    </View>
+  );
+  return (
+    <DrawerLayoutAndroid
+      drawerWidth={300}
+      drawerPosition={DrawerLayoutAndroid.positions.Left}
+      renderNavigationView={() => navigationView}
+    >
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <Text style={{ margin: 10, fontSize: 15, textAlign: "right" }}>
+          Hello
+        </Text>
+        <Text style={{ margin: 10, fontSize: 15, textAlign: "right" }}>
+          World!
+        </Text>
+      </View>
+    </DrawerLayoutAndroid>
+  );
+}
+
+export default App2;

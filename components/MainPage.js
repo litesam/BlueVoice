@@ -1,6 +1,6 @@
 import React from 'react';
 import BluetoothSerial from 'react-native-bluetooth-serial';
-import { View, Switch, Button, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
 import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
@@ -10,9 +10,6 @@ import Sidebar from './Sidebar';
 
 // TODO: Send to Arduino is a seperate component which should be on FeedPage
 
-// width: 90vw;
-// height: 90vh;
-// flex: 1;
 const Wrapper = styled.View`
   padding-top: 40%;
   justify-content: space-around;
@@ -20,25 +17,22 @@ const Wrapper = styled.View`
   flex-direction: column;
 `;
 
-// margin-top: 100px;
-// width: 50vw;
-// height: 50vh;
-// height: 10%;
-// color: 
-const StyledButton = styled.TouchableOpacity`
-  background-color: ${props => props.secondary ? '#0f0' : '#f00'};
-  border-color: rgb(33, 150, 243);
-  align-items: center;
-  width: 200px;
-  flex: 1;
-  height: 200px;
-  border-radius: 132;
-  align-items: center;
-  justify-content: center;
-  border-width: 1;
-  border-color: #000;
-  margin-bottom: 10px;
-`;
+const StyledButton = StyleSheet.create({
+  box: {
+    backgroundColor: '#f00',
+    borderColor: 'rgb(33, 150, 243)',
+    // alignItems: 'center',
+    width: 200,
+    flex: 1,
+    height: 200,
+    borderRadius: 132,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#000',
+    marginBottom: 10,
+  }
+});
 
 export default class MainPage extends React.Component {
   constructor(props) {
@@ -137,6 +131,7 @@ export default class MainPage extends React.Component {
       <View>
         <TouchableHighlight
           onPress={() => this.setState({ isOpen: !this.state.isOpen })}
+          underlayColor='#fff'
         >
           <SvgXml
             width="30"
@@ -148,28 +143,20 @@ export default class MainPage extends React.Component {
         <Wrapper>
           <View style={{ justifyContent: 'space-between' }}>
             {!this.state.connecting ?
-              <StyledButton>
-                <Link to="/feedlive">
-                  <Text>Start Listening</Text>
-                </Link>
-              </StyledButton> :
-              <StyledButton secondary>
-                <Link to="/feedlive">
-                  <Text>Start Listening</Text>
-                </Link>
-              </StyledButton>
+              <Link to="/feedlive" style={StyledButton.box}>
+                <Text>Start Listening</Text>
+              </Link>
+              :
+              <Link to="/feedlive">
+                <Text>Start Listening</Text>
+              </Link>
             }
             <TouchableOpacity
-              style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'papayawhip', height: 50 }}
+              style={{ color: 'pink', justifyContent: 'center', alignItems: 'center', backgroundColor: 'papayawhip', height: 50 }}
               onPress={this.connectToShit}
             ><Text>Connect</Text></TouchableOpacity>
-            {/* <Switch
-              value={false}
-              onValueChange={val => this.setState({ label: val })}
-            /> */}
           </View>
         </Wrapper>
-        {/* <Link to="/history"><Text>See History</Text></Link> */}
       </View>
     );
   }

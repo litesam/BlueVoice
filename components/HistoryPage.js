@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Link } from 'react-router-native';
+import { Link, BackButton } from 'react-router-native';
+import { SvgXml } from 'react-native-svg';
+import { icons } from 'feather-icons/dist/feather';
 
 const A = new Array(8).fill(0).map((a) => {
 
@@ -20,8 +22,15 @@ export default class HistoryPage extends React.Component {
 
     return (
       <View>
-        <Link to="/" underlayColor="pink">
-          <Text>{'<-'}</Text>
+        <BackButton />
+        <Link
+          to="/"
+        >
+          <SvgXml
+            width="30"
+            hieght="30"
+            xml={icons['arrow-left'].toSvg({ stroke: 'black' })}
+          />
         </Link>
         <View style={styles.centerView}>
           {A.map((values, i) => {

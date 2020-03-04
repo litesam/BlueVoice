@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components/native';
-import { View, Text } from 'react-native';
+import styled from 'styled-components/native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Link } from 'react-router-native';
 import { SvgXml } from 'react-native-svg';
 import { icons } from 'feather-icons/dist/feather';
@@ -14,18 +14,22 @@ const Holder = styled.View`
   padding: 1%;
 `;
 
-const StyledButton = styled.TouchableOpacity`
-  background-color: #ff5090;
-  border-color: rgb(33, 150, 243);
-  align-items: center;
-  width: 100px;
-  flex: 1;
-  height: 200px;
-  border-radius: 132;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-`;
+const StyledButton = StyleSheet.create({
+  box: {
+    backgroundColor: '#f00',
+    borderColor: 'rgb(33, 150, 243)',
+    // alignItems: 'center',
+    width: 100,
+    flex: 1,
+    height: 180,
+    borderRadius: 132,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#000',
+    marginBottom: 10,
+  }
+});
 
 export default class FeedPage extends React.Component {
   constructor(props) {
@@ -37,8 +41,8 @@ export default class FeedPage extends React.Component {
       <View>
         <Link to="/">
           <SvgXml
-            width="60"
-            height="60"
+            width="30"
+            height="30"
             xml={icons['arrow-left'].toSvg({ stroke: 'black' })}
           ></SvgXml>
         </Link>
@@ -53,7 +57,7 @@ export default class FeedPage extends React.Component {
             <Text>{"\n"}</Text>
             <Text>{"\t\t\t"}I feel good today!</Text>
           </Holder>
-          <StyledButton><Text>Disconnect</Text></StyledButton>
+          <Link to="/" style={StyledButton.box}><Text>Disconnect</Text></Link>
         </View>
       </View>
     );
